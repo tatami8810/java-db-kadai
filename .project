@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>社員テーブルを作成しよう</name>
+=======
+	<name>ユーザーの投稿データを検索しよう</name>
+>>>>>>> 20977d5 (課題の提出)
 	<comment></comment>
 	<projects>
 	</projects>
