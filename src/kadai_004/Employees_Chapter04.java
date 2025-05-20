@@ -11,9 +11,12 @@ public class Employees_Chapter04 {
         String user = "root";
         String password = "8810AAaa!"; // 実際のパスワードを入力してください
 
+        Connection connection = null;
+        Statement statement = null;
+
         try {
             // データベース接続
-            Connection connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url, user, password);
             System.out.println("データベース接続成功：" + connection);
 
             // テーブル作成用SQL
@@ -25,16 +28,26 @@ public class Employees_Chapter04 {
                     + "address VARCHAR(255))";
 
             // SQL実行
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
             int result = statement.executeUpdate(createTableSQL);
             System.out.println("社員テーブルを作成しました: 更新レコード数=" + result);
-
-            // リソース解放
-            statement.close();
-            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                // リソース解放
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
+
 
